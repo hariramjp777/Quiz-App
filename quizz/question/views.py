@@ -39,7 +39,7 @@ def details(request,level):
                         context={'ques':nextques}
                         return HttpResponseRedirect("/questions/"+str(level))
                     except Question.DoesNotExist:
-                        return redirect("home")
+                        return render(request, "question/quiz-end-page.html", {"score": st.score})
                 else:
                     return redirect("home")
             return render(request,'question/details.html',context)
